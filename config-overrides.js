@@ -1,4 +1,5 @@
 const { injectBabelPlugin, getLoader } = require('react-app-rewired');
+const rewireMobX = require('react-app-rewire-mobx');
 
 const fileLoaderMatcher = function (rule) {
   return rule.loader && rule.loader.indexOf(`file-loader`) != -1;
@@ -11,6 +12,9 @@ module.exports = function override(config, env) {
     //style: 'css',
     style: true, // use less for customized theme
   }], config);
+
+  // mobx
+  config = rewireMobX(config, env);
 
   // customize theme
   config.module.rules[1].oneOf.unshift(

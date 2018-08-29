@@ -3,9 +3,6 @@ import React from "react";
 import { Modal, List, Button, WhiteSpace, WingBlank, InputItem, TextareaItem } from 'antd-mobile';
 import { createForm } from 'rc-form';
 
-// Import Common Stylesheets
-import "../stylesheets/common.css";
-
 function closest(el, selector) {
   const matchesSelector = el.matches || el.webkitMatchesSelector || el.mozMatchesSelector || el.msMatchesSelector;
   while (el) {
@@ -28,7 +25,7 @@ if (isIPhone) {
   };
 }
 
-class App extends React.Component {
+class EleVirtuesBox extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -159,6 +156,6 @@ class App extends React.Component {
   }
 }
 
-const AppWrapper = createForm()(App);
+const EleVirtuesBoxWrapper = createForm()(EleVirtuesBox);
 
-export default AppWrapper;
+export default EleVirtuesBoxWrapper;

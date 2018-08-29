@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "antd-mobile": "^2.2.3",
+    "axios": "^0.18.0",
     "mobx": "^5.0.5",
     "mobx-react": "^5.2.5",
     "mobx-state-tree": "^3.2.3",
@@ -23,7 +24,8 @@
     "babel-plugin-import": "^1.2.0",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
-    "react-scripts": "1.0.13",
-    "react-app-rewired": "^1.2.9"
+    "react-app-rewire-mobx": "^1.0.8",
+    "react-app-rewired": "^1.2.9",
+    "react-scripts": "1.0.13"
   }
 }
