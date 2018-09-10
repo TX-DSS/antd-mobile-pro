@@ -1,36 +1,40 @@
-import { types } from 'mobx-state-tree';
+// @flow
+import { action, observable, runInAction } from 'mobx';
+// import { persist } from 'mobx-persist';
+import request from '../utils/request'
 
-/**
- * Mobx State Tree Store
- * The store recieves 3 parameters
- *  1st one is the Store Name
- *  2nd is an object with the Props and Computed values
- *  3rd is and object with the Actions
- **/
+//页面跳转
+class User {
+  // 持久化登录用户名
+  // @persist('string') @observable username = '';
+  @observable username = '';
 
-const UserStore = types
-  .model('UserStore', {
-    id: types.identifier,
-    name: types.string,
-    lastName: types.string,
-    age: types.number,
-    xp: types.number
-  })
-  .views(self => ({
-    get fullName() {
-      return `${self.name} ${self.lastName}`;
-    }
-  }))
-  .actions(self => ({
-    changeName(name) {
-      self.name = name;
-    },
-    changeLastName(lastName) {
-      self.lastName = lastName;
-    },
-    increaseXp(amount) {
-      self.xp += amount;
-    }
-  }));
+  @action
+  login = async (username, password) => {
+    const respData = await request('/api/user.json', {
+      method: 'GET',
+      body: {
+        username,
+        password,
+      },
+    })
+    // const data = await loginApi(username, password, 'CN', registrationId);
+    runInAction(() => {
+      //数据请求完成进行页面跳
+      if (respData.result == "ok") {
+        this.username = respData.name;
+      }
+    })
+    return true;
+  }
 
-export default UserStore;
+  @action
+  logout = async () => {
+    runInAction(() => {
+      this.username = '';
+    });
+  }
+
+}
+
+export default new User();

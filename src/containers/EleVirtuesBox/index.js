@@ -156,6 +156,4 @@ class EleVirtuesBox extends React.Component {
   }
 }
 
-const EleVirtuesBoxWrapper = createForm()(EleVirtuesBox);
-
-export default EleVirtuesBoxWrapper;
+export default createForm()(EleVirtuesBox);

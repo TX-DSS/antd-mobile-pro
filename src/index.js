@@ -4,37 +4,38 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Provider } from 'mobx-react';
 import registerServiceWorker from './registerServiceWorker';
 
-import UserStore from './stores/user';
-import LanguageStore from './stores/language';
+import Stores from './stores';
+// import UserStore from './stores/user';
+// import LanguageStore from './stores/language';
 
 import App from './containers/App';
-import EleVirtuesBoxWrapper from './containers/EleVirtuesBox';
+import EleVirtuesBox from './containers/EleVirtuesBox';
 import "./stylesheets/common.css";
 
 // render(<App />, document.getElementById('root'));
 registerServiceWorker();
 
 //TODO 获取用户信息
-const userStore = UserStore.create({
-  id: '1',
-  name: 'guest',
-  lastName: 'Casillas',
-  age: 27,
-  xp: 0
-});
-const languageStore = LanguageStore.create({ language: 'en' });
+// const userStore = UserStore.create({
+//   id: '1',
+//   name: 'guest',
+//   lastName: 'Casillas',
+//   age: 27,
+//   xp: 0
+// });
+// const languageStore = LanguageStore.create({ language: 'en' });
 
-const store = {
-  user: userStore,
-  language: languageStore
-};
+// const store = {
+//   user: userStore,
+//   language: languageStore
+// };
 
 const router = (
-  <Provider {...store}>
+  <Provider { ...Stores }>
     <Router>
       <Switch>
         <Route exact path="/" component={App} />
-        <Route exact path="/elevirtuesbox/:id" component={EleVirtuesBoxWrapper} />
+        <Route exact path="/elevirtuesbox/:id" component={EleVirtuesBox} />
       </Switch>
     </Router>
   </Provider>

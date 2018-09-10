@@ -4,6 +4,8 @@ import { TabBar, Icon, WhiteSpace, Card, Grid, List } from 'antd-mobile';
 import { inject, observer } from "mobx-react";
 import request from '../utils/request';
 
+import User from '../containers/User';
+
 const data = Array.from(new Array(9)).map((_val, i) => ({
   icon: 'https://gw.alipayobjects.com/zos/rmsportal/nywPmnTAvTmLusPxHPSu.png',
   text: `name${i}`,
@@ -21,29 +23,24 @@ export default class App extends Component {
     };
   }
 
-  fetchUserInfo = (e) => {
+  onLoginClick = (e) => {
     const { user } = this.props;
     e.preventDefault();
     // this.setState({
     //   hidden: !this.state.hidden,
     // });
-    request('/api/user.json').then((result) => {
-      console.log(result);
-      if (result) {
-        user.changeName(result.name);
-      }
-    });
+    user.login();
   }
 
   renderTab3Content() {
     const { user } = this.props;
     return (
       <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
-        <div style={{ paddingTop: 60 }}>Hi “{user.name}”</div>
+        <div style={{ paddingTop: 60 }}>Hi “{user.username}”</div>
         <a style={{ display: 'block', marginTop: 40, marginBottom: 20, color: '#108ee9' }}
-          onClick={this.fetchUserInfo}
+          onClick={this.onLoginClick}
         >
-          Fetch User Info
+          Login
         </a>
         <List renderHeader={() => 'Icon in the left'}>
           <List.Item
@@ -134,7 +131,7 @@ export default class App extends Component {
               });
             }}
           >
-            {this.renderTab3Content()}
+            <User />
           </TabBar.Item>
         </TabBar>
       </div>
