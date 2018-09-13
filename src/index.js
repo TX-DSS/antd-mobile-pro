@@ -10,6 +10,7 @@ import Stores from './stores';
 
 import App from './containers/App';
 import EleVirtuesBox from './containers/EleVirtuesBox';
+import Test from './containers/Test';
 import "./stylesheets/common.css";
 
 // render(<App />, document.getElementById('root'));
@@ -36,6 +37,7 @@ const router = (
       <Switch>
         <Route exact path="/" component={App} />
         <Route exact path="/elevirtuesbox/:id" component={EleVirtuesBox} />
+        <Route exact path="/test" component={Test} />
       </Switch>
     </Router>
   </Provider>

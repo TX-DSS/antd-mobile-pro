@@ -15,7 +15,28 @@ Web移动端框架开发指南
 
 ## 3. 目录结构说明
 
-
+```bash
+.
+├── node_modules             # 依赖模块目录
+├── public                   # 静态资源文件目录
+├── src                      # 源代码目录
+    ├── components           # 公共组件目录
+    ├── containers           # 功能页面组件jsx文件
+    ├── models               # Dva models Redux处理js文件目录
+    ├── routes               # Ant Design Pro Preview工程demo页面
+    ├── services             # 全局后台接口服务
+    └── utils                # 全局类公共函数
+        └── authority.js     # 用户认证相关方法
+        └── request-fetch.js # dva/fetch异步请求封装
+        └── request.js       # axios异步请求封装
+        └── utils.js         # 公共工具方法
+    ├── index.css            # 主页面入口CSS样式文件
+    ├── index.ejs            # 主页面入口html模板
+    ├── index.js             # 主页面入口js文件
+├── .gitignore               # git版本管理忽略配置
+├── config-overrides.js      # webpack配置自定义
+└── package.json             # npm包管理文件
+```
 
 ## 3. 开发指南
 

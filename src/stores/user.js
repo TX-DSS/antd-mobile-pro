@@ -21,7 +21,7 @@ class User {
     // const data = await loginApi(username, password, 'CN', registrationId);
     runInAction(() => {
       //数据请求完成进行页面跳
-      if (respData.result == "ok") {
+      if (respData.result === "ok") {
         this.username = respData.name;
       }
     })
